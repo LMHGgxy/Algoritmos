@@ -1,0 +1,30 @@
+[
+    {
+        "precio": 180,
+        "distancia": 271287,
+        "nombre": "miraflores",
+        "ir":"chorrillos",
+        "atras":null
+    },
+    {
+        "precio": 183,
+        "distancia": 225536,
+        "nombre": "chorrillos",
+        "ir":"barranco",
+        "atras":"miraflores"
+    },
+    {
+        "precio": 251,
+        "distancia": 216911,
+        "nombre": "barranco",
+        "atras":"chorrillos",
+        "ir":"san isidro"
+    },
+    {
+        "precio": 293,
+        "distancia": 198887,
+        "nombre": "san isidro",
+        "ir":"miraflores",
+        "atras":"barranco"
+    }
+]
