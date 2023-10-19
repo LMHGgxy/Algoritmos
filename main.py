@@ -1,15 +1,10 @@
 from flask import Flask, render_template, jsonify
-from Libs.database_lista_enlazada_doble import *
-
-a = Nodo(1)
-b = Nodo(2)
-c = Nodo(3)
-d = Nodo(4)
-e = Nodo(5)
+from Libs.Lugares import connectionPlace
+from Libs.lista import Lista
 
 app = Flask(__name__, template_folder="templates")
 
-lista = ConnectionPlaces()
+Lugares = Lista()
 
 class ConeroApp:
     def __init__(self):
@@ -21,7 +16,8 @@ class ConeroApp:
 
     @app.route("/lugares")
     def places():
-        return jsonify(lista.convertir_a_json())
+        pass
+        # return jsonify(lista.convertir_a_json())
 
 if __name__ == "__main__":
     places_app = ConeroApp()

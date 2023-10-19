@@ -17,24 +17,18 @@ class connectionPlace:
     def add_connection(self, valor, antes=None, despues=None):
         self.verify(valor)        
         actual = self.head
-        while actual:
-            if valor == actual.valor:
-                if antes:
-                    actual.anteriores.append(antes)
-                if despues:
-                    actual.siguientes.append(despues)
-                return "valores añadidos"
-            actual = actual.siguiente.head
-    
+        if valor == actual.valor:
+            if antes:
+                actual.anteriores.append(antes)
+            if despues:
+                actual.siguientes.append(despues)
+        return "valores añadidos"
+            
     def show(self, show_value):
         current = self.head
         if show_value in ["siguiente","despues","sig"]:
             for i in current.siguientes.show():
                 yield i
-                
         elif show_value in ["anterior","antes","ant"]:
             for i in current.anteriores.show():
                 yield i
-                
-    def create_point(self,valor):
-        self.verify()

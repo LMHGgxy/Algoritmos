@@ -21,9 +21,11 @@ for lugar in places:
     for i in places[lugar]["volver"]:
         valor.add_connection(lugar,antes=i)
     lugares.append(valor)
-    
+places = {}
 for i in lugares.show():
+    places[i.head.valor] = {"ir":[],"volver":[]}
     for o in i.show("antes"):
-        print(f"antes de {i.head.valor} esta {o}")
+        places[i.head.valor]["volver"].append(o)
     for o in i.show("despues"):
-        print(o)
+        places[i.head.valor]["ir"].append(o)
+print(places)
