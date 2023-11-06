@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conero Routes</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon" >
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
 </head>
+
 <body>
     <nav class="chulapi">
         <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
         <h1>Conero routes</h1>
     </nav>
-
+    <div class="container">
+        <canvas id="routes">
+        </canvas>
+    </div>
     <script src="{{ url_for('static', filename='encontrar.js') }}"></script>
 </body>
+
 </html>

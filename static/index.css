@@ -9,7 +9,9 @@
 body{
     width: 100%;
     height: 100vh;
-    background-color: rgb(71, 71, 71);
+    background-image: linear-gradient(to left bottom, #b5b5b5, #b9b3c3, #c3b0ce, #d2abd5, #e4a4d8, #eaaade, #f1b0e4, #f7b6ea, #f3caf6, #f2ddfd, #f6efff, #ffffff);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 nav {
@@ -19,8 +21,21 @@ nav {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: rgb(48, 48, 48);
+    background-color: rgba(150, 150, 150, 0.596)
 }
 img{
     height: 100%;
+}
+#routes{
+    width: 80%;
+    border-radius: 2vw;
+    overflow: hidden;
+    height: calc( 90% - 5vw );
+    background-color: rgba(150, 150, 150, 0.596)
+}
+.container{
+    width: 100%;
+    height: calc( 100% - 5vw );
+    display: grid;
+    place-items: center;
 }
