@@ -21,13 +21,14 @@ nav {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: rgba(150, 150, 150, 0.596)
+    background-color: rgba(150, 150, 150, 0.596);
+    font-size: 1vw;
 }
 img{
     height: 100%;
 }
 #routes{
-    width: 80%;
+    width: 60%;
     border-radius: 2vw;
     overflow: hidden;
     height: calc( 90% - 5vw );
@@ -38,4 +39,51 @@ img{
     height: calc( 100% - 5vw );
     display: grid;
     place-items: center;
+}
+.rutas{
+    width: 100%;
+    height: 100%;
+}
+.datos_usuario{
+    width: 70%;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7vw;
+}
+.datos_usuario input {
+    width: 20%;
+    height: 1.5vw; /* Usar un valor fijo para la altura mejora la consistencia en diferentes tamaños de pantalla */
+    border: 1px solid #ccc; /* Un borde sutil */
+    border-radius: 4px; /* Bordes redondeados */
+    color: black;
+    padding: .5vw; /* Un padding fijo para mantener la consistencia */
+    font-size: .7vw; /* Un tamaño de fuente que no dependa del tamaño de la ventana */
+    box-sizing: border-box;
+    transition: border-color 0.3s; /* Transición suave para el borde */
+}
+
+.datos_usuario input:focus {
+    border-color: #007bff; /* Cambiar el color del borde al enfocar */
+    outline: none; /* Eliminar el outline por defecto */
+    box-shadow: 0 0 0 2px rgba(0,123,255,.25); /* Sombra exterior sutil */
+}
+
+.datos_usuario button {
+    width: 10%;
+    height: 1.5vw; /* Altura fija para alinearse con el input */
+    font-size: .7vw; /* Tamaño de fuente fijo */
+    color: white; /* Color de texto blanco */
+    background-color: #007bff; /* Un fondo azul, por ejemplo */
+    border: 1px solid #007bff; /* Bordes que coincidan con el color de fondo */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box;
+    transition: background-color 0.3s, border-color 0.3s; /* Transiciones suaves para el fondo y el borde */
+    cursor: pointer; /* Cambiar el cursor a un puntero para indicar que es clickeable */
+}
+
+.datos_usuario button:hover {
+    background-color: #0056b3; /* Oscurecer el botón al pasar el ratón por encima */
+    border-color: #004085; /* Cambiar el color del borde en el hover */
 }
