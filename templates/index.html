@@ -18,9 +18,11 @@
         <div id="routes">
             <!-- i'll add something someday in my cv -->
         </div>
+        <span id="respuesta"></span>
         <div class="datos_usuario">
-            <input type="text" placeholder="A dónde quiere ir?" />
-            <button>Buscar ruta optima</button>
+            <input id="inicio" type="text" placeholder="En dónde se encuentra?" />
+            <input id="final" type="text" placeholder="A dónde quiere ir?" />
+            <button onclick="getBusqueda()" >Buscar ruta optima</button>
         </div>
     </div>
     <script src="{{ url_for('static', filename='encontrar.js') }}"></script>

@@ -121,7 +121,7 @@ def draw_places():
     fig, ax = plt.subplots(figsize=(fig_width, fig_height))
     nx.draw_networkx_nodes(G, pos, node_color='skyblue', node_size=1600)
     nx.draw_networkx_labels(G, pos, font_size=10)
-    nx.draw_networkx_edges(G, pos, edgelist=G.edges(), arrowstyle='->', arrowsize=20, edge_color=edge_colors, node_size=2000)
+    nx.draw_networkx_edges(G, pos, edgelist=G.edges(), arrowstyle='-', arrowsize=20, edge_color=edge_colors, node_size=2000)
 
     # Guardar y devolver la imagen
     buf = io.BytesIO()
@@ -139,6 +139,66 @@ def generate_unique_colors(n):
     random.shuffle(colors)
     return colors
 
+def buscar_camino(grafo, inicio, destino):
+    nodos_pendientes = [(0, inicio)]
+    distancia_total = {inicio: 0}
+    nodo_anterior = {inicio: None}
+
+    while nodos_pendientes:
+        # Obtener el nodo con la menor distancia estimada
+        nodo_actual = min(nodos_pendientes, key=lambda x: x[0])[1]
+        nodos_pendientes.remove((distancia_total[nodo_actual], nodo_actual))
+
+        # Verificar si hemos llegado al destino
+        if nodo_actual == destino:
+            # Reconstruir el camino desde el destino hasta el inicio
+            camino = []
+            while nodo_actual is not None:
+                camino.insert(0, nodo_actual)
+                nodo_actual = nodo_anterior[nodo_actual]
+            return camino
+
+        # Explorar vecinos del nodo actual
+        for vecino in grafo[nodo_actual]["ir"] + grafo[nodo_actual]["volver"]:
+            nueva_distancia = distancia_total[nodo_actual] + 1  # Consideramos todas las aristas como igualmente costosas
+
+            if vecino not in distancia_total or nueva_distancia < distancia_total[vecino]:
+                distancia_total[vecino] = nueva_distancia
+                nodo_anterior[vecino] = nodo_actual
+                nodos_pendientes.append((nueva_distancia, vecino))
+
+    # Si no se encuentra un camino, devolver None
+    return None
+
+
+@app.route("/buscar", methods=['POST'])
+def buscar():
+    data = request.json
+
+    # Verificar si los datos de inicio y final están presentes en la solicitud
+    if 'inicio' in data and 'final' in data:
+        start = data["inicio"]
+        end = data["final"]
+
+        # Verificar si el lugar de inicio existe en el diccionario
+        if start in lugares_to_draw:
+            # Verificar si puede ir directamente a su destino desde el lugar de inicio
+            if end in lugares_to_draw[start]['ir'] + lugares_to_draw[start]['volver']:
+                return jsonify({'response': 'puede ir directamente a su destino'})
+            else:
+                # Buscar un camino utilizando el algoritmo A* (previamente definido)
+                camino = buscar_camino(lugares_to_draw, start, end)
+
+                if camino:
+                    return jsonify({'response': f'Camino encontrado: {camino}'})
+                else:
+                    return jsonify({'response': 'No hay camino disponible'})
+        else:
+            return jsonify({'response': 'Lugar de inicio no encontrado'})
+
+    else:
+        return jsonify({'response': 'Envíe datos de inicio y final'})
+    
     
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

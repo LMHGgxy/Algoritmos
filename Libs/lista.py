@@ -39,7 +39,11 @@ class Lista:
             
         # Utiliza temporal_show para obtener el valor actual y avanzar el estado
         return self.temporal_show(self.estado)
-
+    def reiniciar_show(self):
+        # Reinicia el estado a None para volver a empezar
+        self.estado = self.head
+        return 'listo'
+        
     def delete(self, value):
         # Elimina el nodo con el valor dado de la lista
         current = self.head

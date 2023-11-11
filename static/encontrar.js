@@ -21,3 +21,24 @@ const getElementApi = async () => {
     }
 }
 getElementApi()
+
+const getBusqueda = async () => {
+    const inicio_ruta = document.getElementById("inicio").value;
+    const final_ruta = document.getElementById("final").value;
+
+    const response = await fetch("/buscar", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            inicio: inicio_ruta,
+            final: final_ruta
+        })
+    });
+
+    const busqueda = await response.json();
+
+    const respuesta_html = document.getElementById("respuesta");
+    respuesta_html.innerText = JSON.stringify(busqueda);
+}
