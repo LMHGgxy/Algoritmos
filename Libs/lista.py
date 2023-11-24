@@ -2,13 +2,13 @@ class NodoLista:
     def __init__(self, valor):
         self.valor = valor  # El valor almacenado en el nodo
         self.siguiente = None  # El siguiente nodo en la lista, inicialmente None
-
+        
 class Lista:
     def __init__(self):
         self.length = 0  # La longitud de la lista, inicialmente 0
         self.head = None  # El primer nodo de la lista, inicialmente None
         self.estado = None  # Un estado para mantener el seguimiento durante las operaciones
-
+        
     def append(self, value):
         # Añade un nuevo nodo con el valor dado al final de la lista
         if not self.head:
@@ -17,7 +17,7 @@ class Lista:
             self.length += 1
             self.estado = self.head
             return
-
+        
         # Si la lista no está vacía, recorre hasta el último nodo
         actual = self.head
         while actual.siguiente:
@@ -25,12 +25,12 @@ class Lista:
         # Añade el nuevo nodo al final de la lista
         actual.siguiente = NodoLista(value)
         self.length += 1  # Incrementa la longitud de la lista
-
+        
     def temporal_show(self, valor):
         # Muestra el valor actual y actualiza el estado al siguiente nodo
         self.estado = valor.siguiente
         return valor
-
+    
     def show(self):
         # Muestra el valor del nodo actual y avanza el estado
         if not self.estado:

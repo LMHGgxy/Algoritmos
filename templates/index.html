@@ -7,16 +7,36 @@
     <title>Conero Routes</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
+    <img src="{{ url_for('static', filename='CONERO_ROUTES-removebg-preview.png') }}" alt="logo">
     <nav class="chulapi">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
-        <h1>Conero routes</h1>
+        <h1>
+            <span>C</span>
+            <span>O</span>
+            <span>N</span>
+            <span>E</span>
+            <span>R</span>
+            <span>O</span>
+            <span>&nbsp;</span>
+            <span>R</span>
+            <span>O</span>
+            <span>U</span>
+            <span>T</span>
+            <span>E</span>
+            <span>S</span>
+        </h1>
     </nav>
+    
     <div class="container">
-        <div id="routes">
-            <!-- i'll add something someday in my cv -->
+        <div id="graph">
+        </div>
+        <div id="volver" onclick="getElementApi()">
+            <span><i class="fa fa-arrow-left"></i>&nbsp;volver</span>
         </div>
         <span id="respuesta"></span>
         <div class="datos_usuario">
@@ -25,6 +45,7 @@
             <button onclick="getBusqueda()" >Buscar ruta optima</button>
         </div>
     </div>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{{ url_for('static', filename='encontrar.js') }}"></script>
 </body>
 
